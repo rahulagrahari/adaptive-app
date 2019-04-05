@@ -1,27 +1,27 @@
 package com.adaptive.mooc.mooc.service;
 
 import com.adaptive.mooc.mooc.model.Question;
-import com.adaptive.mooc.mooc.repository.QuestionRepo;
+import com.adaptive.mooc.mooc.repository.PreliminaryQuestionRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class QuestionServices {
+public class PreliminaryQuestionServices {
 
     @Autowired
-    QuestionRepo questionRepo;
+    PreliminaryQuestionRepo preliminaryQuestionRepo;
 
     public Question evaluate(Question que) {
 
         int id = que.getId();
         String user_sol = que.getSol();
 
-        Question q = (Question) questionRepo.findById(id).get();
+        Question q = (Question) preliminaryQuestionRepo.findById(id).get();
         if (!user_sol.equals(q.getSol())){
-            return questionRepo.findById(id-1).get();
+            return preliminaryQuestionRepo.findById(id-1).get();
         }
 
-            return questionRepo.findById(id+1).get();
+            return preliminaryQuestionRepo.findById(id+1).get();
 
 
     }
@@ -29,12 +29,12 @@ public class QuestionServices {
 
     public Question getQuestion(int rating) {
 
-        return questionRepo.findById(rating).get();
+        return preliminaryQuestionRepo.findById(rating).get();
 
     }
 
     public void addQues(Question question) {
 
-        questionRepo.save(question);
+        preliminaryQuestionRepo.save(question);
     }
 }
