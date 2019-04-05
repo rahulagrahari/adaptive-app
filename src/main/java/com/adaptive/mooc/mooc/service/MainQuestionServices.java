@@ -85,7 +85,7 @@ public class MainQuestionServices {
 
     private int getLatestScore(int params) {
         int i = params;
-        Score ss = scoreRepo.findById(1).get();
+        Score ss = scoreRepo.findById(2).get();
         int idx = ss.getIndex();
         int flag = 0;
 
