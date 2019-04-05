@@ -63,9 +63,11 @@ public class MainQuestionServices {
             if(s < 5){
                 um.setScore(s+1);
             }
+
             if (topic<5){
                 topic = topic + 1;
             }
+            else return null;
             modelRepo.save(um);
             mainQuestionRepo.findByLevelAndTopic(um.getScore(), topic).forEach(prob->p.add((Problem) prob));
         }
@@ -166,10 +168,14 @@ public class MainQuestionServices {
 
     /**
      *  to be filled according to the algorithm
-     * @param user_answer
+     * @param user_answer: which has sequential right or wrong entry
+     *                      format eg: [0,1,0,1]
      * @return
      */
     public int heuristic(int[] user_answer){
+
+        // write your code here **
+
         return 1;
     }
 
